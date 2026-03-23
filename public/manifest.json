@@ -6,16 +6,16 @@
   "permissions": ["tabs", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
-    "service_worker": "/src/background/background.ts"
+    "service_worker": "/assets/background.js"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["/src/content/content.ts"],
+      "js": ["/assets/content.js"],
       "run_at": "document_idle"
     }
   ],
-  "default_popup": "/src/popup/index.html",
+  "default_popup": "/index.html",
   "icons": {
     "16": "/icons/icon-16.png",
     "48": "/icons/icon-48.png",
