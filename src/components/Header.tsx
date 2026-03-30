@@ -1,9 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
+
 export default function Header() {
   return (
-    <header className="flex justify-between items-center bg-white h-[55px] px-[20px] border-b border-[#eee]">
-      <img className="w-[100px]" src="/icons/dritto-logo-light.png" alt="dritto-logo" />
-      <button type="button">
-        <i className="fa-solid fa-circle-info text-[#777] cursor-pointer"></i>
+    <header className="flex justify-between items-center bg-white h-[50px] px-[20px] border-b border-[#eee]">
+      <h1 className='italic select-none cursor-pointer font-bold text-[#666]'>Dritto</h1>
+      <button type="button" className='text-[#666] cursor-pointer'>
+        <FontAwesomeIcon icon={['fas', 'circle-info']} />
       </button>
     </header>
   );
