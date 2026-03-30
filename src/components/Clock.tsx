@@ -10,7 +10,9 @@ export default function Clock() {
 
   hours = hours.length === 1? `0${hours}` : hours;
 
-  const minutes = date.getMinutes();
+  let minutes = `${date.getMinutes()}`;
+  minutes = minutes.length === 1? `0${minutes}` : minutes;
+
   const isAM = date.getHours() < 12;
 
   setInterval(() => {
