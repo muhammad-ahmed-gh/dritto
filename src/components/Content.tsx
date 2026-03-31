@@ -1,27 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Clock from "./Clock";
 
 export function Content() {
   const [date, setDate] = useState(new Date());
   const hour = date.getHours();
-  const greeting = hour < 5?
-  "Good night":
-  hour < 12?
-  "Good morning":
-  hour < 18?
-  "Good afternoon":
-  hour < 22?
-  "Good evening":
-  "Good night";
 
-  setInterval(() => {
-    setDate(new Date());
-  }, 1000);
+  let greeting: string;
+  switch(true) {
+    case hour < 5:
+      greeting = "Good night";
+      break;
+    case hour < 12:
+      greeting = "Good morning";
+      break;
+    case hour < 18:
+      greeting = "Good afternoon";
+      break;
+    case hour < 22:
+      greeting = "Good evening";
+      break;
+    default:
+      greeting = "Good night";
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="p-[20px] h-[350px]">
       {greeting}
-      <Clock />
+      <Clock date={date} />
     </main>
   );
 }

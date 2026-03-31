@@ -1,30 +1,34 @@
-import { useState } from "react";
+type Props = {
+  date: Date;
+}
 
-export default function Clock() {
-  const [date, setDate] = useState(new Date());
-  let hours = date.getHours() === 0?
-  "12" :
-  date.getHours() > 12?
-  `${date.getHours() - 12}`:
-  `${date.getHours()}`;
+export default function Clock(props: Props) {
+  const hours = props.date.getHours();
+  let hoursText: string;
 
-  hours = hours.length === 1? `0${hours}` : hours;
+  switch(true) {
+    case hours === 0:
+      hoursText = "12";
+      break;
+    case hours > 12:
+      hoursText = `${hours - 12}`;
+      break;
+    default:
+      hoursText = `${hours}`;
+  }
 
-  let minutes = `${date.getMinutes()}`;
+  hoursText = hoursText.length === 1? `0${hoursText}` : hoursText;
+
+  let minutes = `${props.date.getMinutes()}`;
   minutes = minutes.length === 1? `0${minutes}` : minutes;
 
-  const isAM = date.getHours() < 12;
-
-  setInterval(() => {
-    setDate(new Date());
-  }, 1000);
 
   return (
     <div className="clock w-[170px] h-[170px] flex justify-center items-center rounded-full border-[3px] border-[#32f461] mx-auto relative mt-[20px]">
       <div className="container flex flex-col justify-center items-center">
-        <span className="hours text-[50px] leading-[55px] font-bold">{hours}</span>
+        <span className="hours text-[50px] leading-[55px] font-bold">{hoursText}</span>
         <span className="minutes text-[50px] leading-[55px] font-bold">{minutes}</span>
-        <span className="am absolute right-[24px] bottom-[33px]">{isAM? "AM" : "PM"}</span>
+        <span className="am absolute right-[24px] bottom-[33px]">{hours < 12? "AM" : "PM"}</span>
       </div>
     </div>
   );
