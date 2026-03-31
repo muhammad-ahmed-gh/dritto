@@ -35,6 +35,10 @@ export function Content() {
     <main className="p-[20px] h-[350px]">
       {greeting}
       <Clock date={date} />
+      
+      <span className="text-[14px] text-[#555] block text-center mt-[15px]">
+        You have 2 pending tasks
+      </span>
     </main>
   );
 }
