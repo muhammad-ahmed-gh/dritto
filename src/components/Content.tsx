@@ -1,44 +1,27 @@
-import { useEffect, useState } from "react";
-import Clock from "./Clock";
+import Calendar from "./Calendar";
+import Home from "./Home";
+import Options from "./Options";
+import Pomodoro from "./Pomodoro";
+import Tasks from "./Tasks";
 
-export function Content() {
-  const [date, setDate] = useState(new Date());
-  const hour = date.getHours();
+type Props = {
+  activeTab: string;
+}
 
-  let greeting: string;
-  switch(true) {
-    case hour < 5:
-      greeting = "Good night";
-      break;
-    case hour < 12:
-      greeting = "Good morning";
-      break;
-    case hour < 18:
-      greeting = "Good afternoon";
-      break;
-    case hour < 22:
-      greeting = "Good evening";
-      break;
+export function Content(props: Props) {
+
+  switch(props.activeTab) {
+    case "Home":
+      return <Home />
+    case "Calendar":
+      return <Calendar />
+    case "Tasks":
+      return <Tasks />
+    case "Pomodoro":
+      return <Pomodoro />
+    case "Options":
+      return <Options />
     default:
-      greeting = "Good night";
+      return <main className="p-[20px] h-[350px]"></main>;
   }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDate(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <main className="p-[20px] h-[350px]">
-      {greeting}
-      <Clock date={date} />
-      
-      <span className="text-[14px] text-[#555] block text-center mt-[15px]">
-        You have 2 pending tasks
-      </span>
-    </main>
-  );
 }
