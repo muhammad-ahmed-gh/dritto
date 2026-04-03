@@ -1,3 +1,4 @@
+import About from "./About";
 import Calendar from "./Calendar";
 import Home from "./Home";
 import Options from "./Options";
@@ -21,6 +22,8 @@ export function Content(props: Props) {
       return <Pomodoro />
     case "Options":
       return <Options />
+    case "About":
+      return <About />
     default:
       return <main className="p-[20px] h-[350px]"></main>;
   }

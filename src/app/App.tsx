@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "/src/styles/index.css";
 
-import Tab from "../types/navigation";
+import {Tab} from "../types/navigation";
 
 function App() {
 
@@ -12,9 +12,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header setActiveTab={setActiveTab} />
       <Content activeTab={activeTab} />
-      <Footer setActiveTab={setActiveTab} />
+      <Footer activeTab={activeTab} setActiveTab={setActiveTab} />
     </>
   );
 }
