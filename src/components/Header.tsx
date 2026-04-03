@@ -1,11 +1,8 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-library.add(fas);
-import {Tab, StateSetter} from "../types/navigation";
+import { Tab, StateSetter } from "../types/navigation";
 
 type Props = {
   setActiveTab: StateSetter<Tab>;
-}
+};
 
 export default function Header(props: Props) {
   return (
