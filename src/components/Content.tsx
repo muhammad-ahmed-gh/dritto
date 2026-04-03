@@ -1,7 +1,7 @@
 import About from "./About";
 import Calendar from "./Calendar";
 import Home from "./Home";
-import Options from "./Options";
+import Controls from "./Controls";
 import Pomodoro from "./Pomodoro";
 import Tasks from "./Tasks";
 
@@ -20,8 +20,8 @@ export function Content(props: Props) {
       return <Tasks />
     case "Pomodoro":
       return <Pomodoro />
-    case "Options":
-      return <Options />
+    case "Controls":
+      return <Controls />
     case "About":
       return <About />
     default:

@@ -15,7 +15,7 @@ export default function Footer(props: FooterProps) {
     { icon: "check", label: "tasks", tabName: "Tasks" },
     { icon: "house", label: "home", tabName: "Home" },
     { icon: "clock", label: "sessions", tabName: "Pomodoro" },
-    { icon: "gear", label: "options", tabName: "Options" },
+    { icon: "sliders", label: "controls", tabName: "Controls" },
   ];
 
   return (
