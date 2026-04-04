@@ -12,6 +12,8 @@ import {
   faInstagram,
   faTiktok,
   faXTwitter,
+  faLinkedin,
+  faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 
 const ControlsConfig = {
@@ -19,27 +21,81 @@ const ControlsConfig = {
     {
       title: "focus",
       options: [
-        { label: "Block sites", icon: faEarthAmericas },
-        { label: "Tabs count", icon: faTableCellsLarge },
-        { label: "Scrolling limit", icon: faMobileScreen },
+        {
+          label: "Block sites",
+          icon: faEarthAmericas,
+          optionCode: "BlockSites",
+        },
+        {
+          label: "Tabs count",
+          icon: faTableCellsLarge,
+          optionCode: "TabsCount",
+        },
+        {
+          label: "Scrolling limit",
+          icon: faMobileScreen,
+          optionCode: "ScrollingLimit",
+        },
       ],
     },
     {
       title: "social media",
       options: [
-        { label: "YouTube", icon: faYoutube },
-        { label: "Facebook", icon: faFacebook },
-        { label: "Twitter", icon: faXTwitter },
-        { label: "Tiktok", icon: faTiktok },
-        { label: "Instagram", icon: faInstagram },
+        {
+          label: "YouTube",
+          icon: faYoutube,
+          optionCode: "YouTube",
+        },
+        {
+          label: "Facebook",
+          icon: faFacebook,
+          optionCode: "Facebook",
+        },
+        {
+          label: "Twitter",
+          icon: faXTwitter,
+          optionCode: "Twitter",
+        },
+        {
+          label: "TikTok",
+          icon: faTiktok,
+          optionCode: "TikTok",
+        },
+        {
+          label: "Instagram",
+          icon: faInstagram,
+          optionCode: "Instagram",
+        },
+        {
+          label: "LinkedIn",
+          icon: faLinkedin,
+          optionCode: "LinkedIn",
+        },
+        {
+          label: "Pinterest",
+          icon: faPinterest,
+          optionCode: "Pinterest",
+        },
       ],
     },
     {
       title: "advanced",
       options: [
-        { label: "Block by domain", icon: faEarthAsia },
-        { label: "Import/export settings", icon: faArrowUpFromBracket },
-        { label: "Reset settings", icon: faRotateLeft },
+        {
+          label: "Block by domain",
+          icon: faEarthAsia,
+          optionCode: "BlockByDomain",
+        },
+        {
+          label: "Import/export settings",
+          icon: faArrowUpFromBracket,
+          optionCode: "ImportExportSettings",
+        },
+        {
+          label: "Reset settings",
+          icon: faRotateLeft,
+          optionCode: "ResetSettings",
+        },
       ],
     },
   ],
