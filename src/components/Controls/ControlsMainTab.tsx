@@ -12,23 +12,26 @@ type OptionProp = {
 
 function Option(props: OptionProp) {
   return (
-    <div className="option bg-surface shadow-[0px_1px_2px_#77777761] flex justify-between items-center rounded-[5px] py-[10px] px-[15px] select-none cursor-pointer hover:bg-surface-lighter transition-colors duration-300" onClick={props.handleClick}>
+    <div
+      className="option bg-surface shadow-[0px_1px_2px_#77777761] flex justify-between items-center rounded-[5px] py-[10px] px-[15px] select-none cursor-pointer hover:bg-surface-lighter transition-colors duration-300"
+      onClick={props.handleClick}
+    >
       <span className="text-[0.95rem] flex items-center gap-[10px]">
-        <FontAwesomeIcon className="text-text-dark" icon={props.icon} />
+        <FontAwesomeIcon className="text-text-muted" icon={props.icon} />
         {props.label}
       </span>
-      <FontAwesomeIcon className="text-text-dark" icon={faAngleRight} />
+      <FontAwesomeIcon className="text-text-muted" icon={faAngleRight} />
     </div>
   );
 }
 
 type Props = {
   setActiveOption: StateSetter<ControlOption>;
-}
+};
 
-export default function MainControls(props: Props) {
+export default function ControlsMainTab(props: Props) {
   return (
-    <main className="p-[20px] h-tab-height text-text-muted overflow-y-scroll">
+    <main className="p-[20px] h-tab-height text-text-muted overflow-y-auto">
       <h3 className="font-bold text-[1.2rem] mb-[5px] capitalize">Controls</h3>
       <div className="categories flex flex-col gap-[20px]">
         {ControlsConfig.categories.map((category) => (
@@ -42,7 +45,9 @@ export default function MainControls(props: Props) {
                   key={option.label}
                   label={option.label}
                   icon={option.icon}
-                  handleClick={() => props.setActiveOption(option.optionCode as ControlOption)}
+                  handleClick={() =>
+                    props.setActiveOption(option.optionCode as ControlOption)
+                  }
                 />
               ))}
             </div>
@@ -51,4 +56,4 @@ export default function MainControls(props: Props) {
       </div>
     </main>
   );
-};
+}

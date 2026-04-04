@@ -16,7 +16,7 @@ export default function Footer(props: FooterProps) {
           className="flex flex-col justify-center items-center gap-y-[5px]"
         >
           <button
-            className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === props.activeTab ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-[#555] hover:bg-[#f1f1f1]"}`}
+            className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === props.activeTab ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-text-muted hover:bg-[#f1f1f1]"}`}
             onClick={() => props.setActiveTab(buttonData.tabName)}
           >
             <FontAwesomeIcon icon={buttonData.icon} />
