@@ -32,11 +32,11 @@ export default function Home() {
   }, []);
 
   return (
-      <main className="p-[20px] h-[350px]">
+      <main className="p-[20px] h-tab-height">
         {greeting}
         <Clock date={date} />
         
-        <span className="text-[14px] text-[#555] block text-center mt-[15px]">
+        <span className="text-[14px] text-text-muted block text-center mt-[15px]">
           You have 2 pending tasks
         </span>
       </main>

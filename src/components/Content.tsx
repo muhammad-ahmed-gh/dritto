@@ -25,6 +25,6 @@ export function Content(props: Props) {
     case "About":
       return <About />
     default:
-      return <main className="p-[20px] h-[350px]"></main>;
+      return <main className="p-[20px] h-tab-height"></main>;
   }
 }

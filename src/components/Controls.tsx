@@ -10,19 +10,19 @@ type OptionProp = {
 
 function Option(props: OptionProp) {
   return (
-    <div className="option bg-white shadow-[0px_1px_2px_#77777761] flex justify-between items-center rounded-[5px] p-[10px_15px] select-none cursor-pointer hover:bg-[#fbfbfb] transition-[background-color] duration-[0.3s]">
+    <div className="option bg-surface shadow-[0px_1px_2px_#77777761] flex justify-between items-center rounded-[5px] py-[10px] px-[15px] select-none cursor-pointer hover:bg-surface-lighter transition-colors duration-300">
       <span className="text-[0.95rem] flex items-center gap-[10px]">
-        <FontAwesomeIcon className="text-[#666]" icon={props.icon} />
+        <FontAwesomeIcon className="text-text-dark" icon={props.icon} />
         {props.label}
       </span>
-      <FontAwesomeIcon className="text-[#666]" icon={faAngleRight} />
+      <FontAwesomeIcon className="text-text-dark" icon={faAngleRight} />
     </div>
   );
 }
 
 export default function Controls() {
   return (
-    <main className="p-[20px] h-[350px] text-[#555] overflow-y-scroll">
+    <main className="p-[20px] h-tab-height text-text-muted overflow-y-scroll">
       <h3 className="font-bold text-[1.2rem] mb-[5px] capitalize">Controls</h3>
       <div className="categories flex flex-col gap-[20px]">
         {ControlsConfig.categories.map((category) => (

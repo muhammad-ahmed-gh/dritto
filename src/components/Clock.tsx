@@ -14,7 +14,7 @@ export default function Clock(props: Props) {
 
 
   return (
-    <div className="clock w-[170px] h-[170px] flex justify-center items-center rounded-full border-[3px] border-[#32f461] mx-auto relative mt-[20px] select-none cursor-pointer transition-[background-color] duration-[0.3s] hover:bg-[#f5f5f5]">
+    <div className="clock w-[170px] h-[170px] flex justify-center items-center rounded-full border-[3px] border-primary mx-auto relative mt-[20px] select-none cursor-pointer transition-colors duration-300 hover:bg-surface-soft">
       <div className="container flex flex-col justify-center items-center">
         <span className="hours text-[50px] leading-[55px] font-bold">
           <span className="digit w-[34px] text-center inline-block">{hoursDigit1}</span>
