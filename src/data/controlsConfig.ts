@@ -15,8 +15,22 @@ import {
   faLinkedin,
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { ControlOption } from "../types/navigation";
 
-const ControlsConfig = {
+type ControlsConfig = {
+  categories: {
+    title: string;
+    options: {
+      label: string;
+      icon: IconProp;
+      iconColor?: string;
+      optionCode: ControlOption;
+    }[];
+  }[];
+};
+
+const controlsConfig: ControlsConfig = {
   categories: [
     {
       title: "focus",
@@ -44,36 +58,43 @@ const ControlsConfig = {
         {
           label: "YouTube",
           icon: faYoutube,
+          iconColor: "#ff0033",
           optionCode: "YouTube",
         },
         {
           label: "Facebook",
           icon: faFacebook,
+          iconColor: "#0866ff",
           optionCode: "Facebook",
         },
         {
           label: "Twitter",
           icon: faXTwitter,
+          iconColor: "#0f1419",
           optionCode: "Twitter",
         },
         {
           label: "TikTok",
           icon: faTiktok,
+          iconColor: "#000000",
           optionCode: "TikTok",
         },
         {
           label: "Instagram",
           icon: faInstagram,
+          iconColor: "#d64437",
           optionCode: "Instagram",
         },
         {
           label: "LinkedIn",
           icon: faLinkedin,
+          iconColor: "#0a66c2",
           optionCode: "LinkedIn",
         },
         {
           label: "Pinterest",
           icon: faPinterest,
+          iconColor: "#e60023",
           optionCode: "Pinterest",
         },
       ],
@@ -101,4 +122,4 @@ const ControlsConfig = {
   ],
 };
 
-export default ControlsConfig;
+export default controlsConfig;
