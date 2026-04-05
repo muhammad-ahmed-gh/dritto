@@ -1,4 +1,15 @@
-# Dritto
+<div align="center">
+  <h1>Dritto</h1>
+  <img width="100" src="public/icons/logo-edited.png" alt="dritto logo">
+  <b><p>Product = Work - Distraction</p></b>
+
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=round-square" />
+  <img src="https://img.shields.io/badge/React-5CD3F3?style=round-square" />
+  <img src="https://img.shields.io/badge/TailwindCSS-00BCFF?style=round-square" />
+  <img src="https://img.shields.io/badge/Vite-6412E1?style=round-square" />
+</div>
+
+## Overview
 
 A productivity-focused browser extension designed to help you stay focused and minimize distractions online.
 
