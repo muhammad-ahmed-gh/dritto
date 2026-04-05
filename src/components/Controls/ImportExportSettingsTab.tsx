@@ -1,8 +1,8 @@
-import { ControlOption, StateSetter } from "../../types/navigation";
+import { ControlOptionTab, StateSetter } from "../../types/navigation";
 
 type Props = {
-  setActiveOption: StateSetter<ControlOption>;
-}
+  setActiveOption: StateSetter<ControlOptionTab>;
+};
 
 export default function ImportExportSettingsTab(props: Props) {
   return (

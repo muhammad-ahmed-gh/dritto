@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import controlsConfig from "../../data/controlsConfig";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ControlOption, StateSetter } from "../../types/navigation";
+import { ControlOptionTab, StateSetter } from "../../types/navigation";
 
 type OptionProp = {
   label: string;
@@ -31,7 +31,7 @@ function Option(props: OptionProp) {
 }
 
 type Props = {
-  setActiveOption: StateSetter<ControlOption>;
+  setActiveOption: StateSetter<ControlOptionTab>;
 };
 
 export default function ControlsMainTab(props: Props) {
@@ -52,7 +52,7 @@ export default function ControlsMainTab(props: Props) {
                   icon={option.icon}
                   iconColor={option.iconColor}
                   handleClick={() =>
-                    props.setActiveOption(option.optionCode as ControlOption)
+                    props.setActiveOption(option.optionCode as ControlOptionTab)
                   }
                 />
               ))}

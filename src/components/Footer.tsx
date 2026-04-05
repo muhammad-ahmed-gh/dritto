@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tab, StateSetter } from "../types/navigation";
+import { MainTab, StateSetter, SubTab } from "../types/navigation";
 import buttonsData from "../data/footerButtons";
 
 type FooterProps = {
-  activeTab: Tab;
-  setActiveTab: StateSetter<Tab>;
+  activeTab: MainTab;
+  setActiveTab: StateSetter<MainTab>;
+  setActiveSubTab: StateSetter<SubTab>;
 };
 
 export default function Footer(props: FooterProps) {
@@ -17,7 +18,10 @@ export default function Footer(props: FooterProps) {
         >
           <button
             className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === props.activeTab ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-text-muted hover:bg-[#f1f1f1]"}`}
-            onClick={() => props.setActiveTab(buttonData.tabName)}
+            onClick={() => {
+              props.setActiveTab(buttonData.tabName);
+              props.setActiveSubTab("None");
+            }}
           >
             <FontAwesomeIcon icon={buttonData.icon} />
           </button>

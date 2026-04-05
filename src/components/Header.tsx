@@ -1,22 +1,20 @@
-import { Tab, StateSetter } from "../types/navigation";
+import { MainTab, StateSetter, SubTab } from "../types/navigation";
+import MainHeader from "./Header/MainHeader";
+import SubHeader from "./Header/SubHeader";
 
 type Props = {
-  setActiveTab: StateSetter<Tab>;
+  activeSubTab: SubTab;
+  setActiveTab: StateSetter<MainTab>;
+  setActiveSubTab: StateSetter<SubTab>;
 };
 
 export default function Header(props: Props) {
-  return (
-    <header className="flex justify-between items-center bg-surface h-[50px] px-[20px] border-b border-border-light">
-      <h1 className="italic select-none cursor-pointer font-bold text-text-muted text-[17px]">
-        Dritto
-      </h1>
-      <button
-        type="button"
-        className="text-text-muted cursor-pointer text-[14px]"
-        onClick={() => props.setActiveTab("About")}
-      >
-        About
-      </button>
-    </header>
+  return props.activeSubTab === "None" ? (
+    <MainHeader setActiveTab={props.setActiveTab} />
+  ) : (
+    <SubHeader
+      activeSubTab={props.activeSubTab}
+      setActiveSubTab={props.setActiveSubTab}
+    />
   );
 }

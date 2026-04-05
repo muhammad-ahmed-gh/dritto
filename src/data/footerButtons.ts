@@ -5,10 +5,10 @@ import {
   faClock,
   faSliders,
 } from "@fortawesome/free-solid-svg-icons";
-import { Tab } from "../types/navigation";
+import { MainTab } from "../types/navigation";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-type ButtonsData = { icon: IconProp; label: string; tabName: Tab }[];
+type ButtonsData = { icon: IconProp; label: string; tabName: MainTab }[];
 
 const buttonsData: ButtonsData = [
   { icon: faCalendar, label: "calendar", tabName: "Calendar" },

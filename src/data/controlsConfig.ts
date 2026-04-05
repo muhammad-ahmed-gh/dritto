@@ -4,7 +4,7 @@ import {
   faEarthAsia,
   faMobileScreen,
   faRotateLeft,
-  faTableCellsLarge,
+  faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faYoutube,
@@ -16,7 +16,7 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ControlOption } from "../types/navigation";
+import { ControlOptionTab } from "../types/navigation";
 
 type ControlsConfig = {
   categories: {
@@ -25,7 +25,7 @@ type ControlsConfig = {
       label: string;
       icon: IconProp;
       iconColor?: string;
-      optionCode: ControlOption;
+      optionCode: ControlOptionTab;
     }[];
   }[];
 };
@@ -42,7 +42,7 @@ const controlsConfig: ControlsConfig = {
         },
         {
           label: "Tabs count",
-          icon: faTableCellsLarge,
+          icon: faWindowRestore,
           optionCode: "TabsCount",
         },
         {

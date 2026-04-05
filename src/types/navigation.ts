@@ -1,6 +1,6 @@
 export type StateSetter<T> = React.Dispatch<React.SetStateAction<T>>;
 
-export type Tab =
+export type MainTab =
   | "Home"
   | "Calendar"
   | "Tasks"
@@ -8,7 +8,7 @@ export type Tab =
   | "Controls"
   | "About";
 
-export type ControlOption =
+export type ControlOptionTab =
   | "None"
   | "BlockSites"
   | "TabsCount"
@@ -23,3 +23,7 @@ export type ControlOption =
   | "BlockByDomain"
   | "ImportExportSettings"
   | "ResetSettings";
+
+export type SubTab = ControlOptionTab;
+
+export type Tab = MainTab | SubTab;

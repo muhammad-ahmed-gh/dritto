@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { ControlOption } from "../types/navigation";
+import { ControlOptionTab, StateSetter } from "../types/navigation";
 import ControlsMainTab from "./Controls/ControlsMainTab";
 import BlockSitesTab from "./Controls/BlockSitesTab";
 import TabsCountTab from "./Controls/TabsCountTab";
@@ -15,9 +14,12 @@ import BlockByDomainTab from "./Controls/BlockByDomainTab";
 import ImportExportSettingsTab from "./Controls/ImportExportSettingsTab";
 import ResetSettingsTab from "./Controls/ResetSettingsTab";
 
-export default function Controls() {
-  const [activeOption, setActiveOption] = useState<ControlOption>("None");
+type Props = {
+  activeSubTab: ControlOptionTab;
+  setActiveSubTab: StateSetter<ControlOptionTab>;
+};
 
+export default function Controls(props: Props) {
   const optionComponents = {
     None: ControlsMainTab,
     BlockSites: BlockSitesTab,
@@ -35,6 +37,6 @@ export default function Controls() {
     ResetSettings: ResetSettingsTab,
   };
 
-  const CurrentOptionTab = optionComponents[activeOption];
-  return <CurrentOptionTab setActiveOption={setActiveOption} />;
+  const CurrentOptionTab = optionComponents[props.activeSubTab];
+  return <CurrentOptionTab setActiveOption={props.setActiveSubTab} />;
 }

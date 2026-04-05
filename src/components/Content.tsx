@@ -4,26 +4,33 @@ import Home from "./Home";
 import Controls from "./Controls";
 import Pomodoro from "./Pomodoro";
 import Tasks from "./Tasks";
+import { StateSetter, SubTab, MainTab } from "../types/navigation";
 
 type Props = {
-  activeTab: string;
-}
+  activeTab: MainTab;
+  activeSubTab: SubTab;
+  setActiveSubTab: StateSetter<SubTab>;
+};
 
 export function Content(props: Props) {
-
-  switch(props.activeTab) {
+  switch (props.activeTab) {
     case "Home":
-      return <Home />
+      return <Home />;
     case "Calendar":
-      return <Calendar />
+      return <Calendar />;
     case "Tasks":
-      return <Tasks />
+      return <Tasks />;
     case "Pomodoro":
-      return <Pomodoro />
+      return <Pomodoro />;
     case "Controls":
-      return <Controls />
+      return (
+        <Controls
+          activeSubTab={props.activeSubTab}
+          setActiveSubTab={props.setActiveSubTab}
+        />
+      );
     case "About":
-      return <About />
+      return <About />;
     default:
       return <main className="p-[20px] h-tab-height"></main>;
   }
