@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Dritto</h1>
-  <img width="100" src="public/icons/logo-edited.png" alt="dritto logo">
+  <img width="100" src="public/icons/icon-128-shadow.png" alt="dritto logo">
   <b><p>Product = Work - Distraction</p></b>
 
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=round-square" />
