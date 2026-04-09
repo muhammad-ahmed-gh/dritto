@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MainTab, StateSetter, SubTab } from "../types/navigation";
+import { MainTab, StateSetter, SubTab } from "../types/tabs";
 import buttonsData from "../data/footerButtons";
 
 type FooterProps = {

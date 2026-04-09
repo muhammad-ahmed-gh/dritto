@@ -1,4 +1,3 @@
-import { ControlOptionTab, StateSetter } from "../types/navigation";
 import ControlsMainTab from "./Controls/ControlsMainTab";
 import BlockSitesTab from "./Controls/BlockSitesTab";
 import TabsCountTab from "./Controls/TabsCountTab";
@@ -13,30 +12,47 @@ import PinterestTab from "./Controls/PinterestTab";
 import BlockByDomainTab from "./Controls/BlockByDomainTab";
 import ImportExportSettingsTab from "./Controls/ImportExportSettingsTab";
 import ResetSettingsTab from "./Controls/ResetSettingsTab";
+// import { ControlsData } from "../types/ControlsData";
+import { useContext, /*useEffect, useState*/ } from "react";
+import { ActiveSubTabContext } from "../context/ActiveSubTabContext";
 
-type Props = {
-  activeSubTab: ControlOptionTab;
-  setActiveSubTab: StateSetter<ControlOptionTab>;
-};
+export default function Controls() {
+  const activeSubTabContext = useContext(ActiveSubTabContext);
+  // const [controlsData, setControlsData] = useState<ControlsData | null>(null);
 
-export default function Controls(props: Props) {
-  const optionComponents = {
-    None: ControlsMainTab,
-    BlockSites: BlockSitesTab,
-    TabsCount: TabsCountTab,
-    ScrollingLimit: ScrollingLimitTab,
-    YouTube: YouTubeTab,
-    Facebook: FacebookTab,
-    Twitter: TwitterTab,
-    TikTok: TikTokTab,
-    Instagram: InstagramTab,
-    LinkedIn: LinkedInTab,
-    Pinterest: PinterestTab,
-    BlockByDomain: BlockByDomainTab,
-    ImportExportSettings: ImportExportSettingsTab,
-    ResetSettings: ResetSettingsTab,
-  };
+  // useEffect(() => {
+  //   chrome.storage.local.get(["controls"])
+  //   .then(res => setControlsData(res.controls as ControlsData));
+  // }, []);
 
-  const CurrentOptionTab = optionComponents[props.activeSubTab];
-  return <CurrentOptionTab setActiveOption={props.setActiveSubTab} />;
+  switch(activeSubTabContext?.value) {
+    case "None":
+      return <ControlsMainTab />
+    case "BlockSites":
+      return <BlockSitesTab />;
+    case "TabsCount":
+      return <TabsCountTab />;
+    case "ScrollingLimit":
+      return <ScrollingLimitTab />;
+    case "YouTube":
+      return <YouTubeTab />;
+    case "Facebook":
+      return <FacebookTab />;
+    case "Twitter":
+      return <TwitterTab />;
+    case "TikTok":
+      return <TikTokTab />;
+    case "Instagram":
+      return <InstagramTab />;
+    case "LinkedIn":
+      return <LinkedInTab />;
+    case "Pinterest":
+      return <PinterestTab />;
+    case "BlockByDomain":
+      return <BlockByDomainTab />;
+    case "ImportExportSettings":
+      return <ImportExportSettingsTab />;
+    case "ResetSettings":
+      return <ResetSettingsTab />;
+  }
 }

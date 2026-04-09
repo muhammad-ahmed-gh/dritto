@@ -1,20 +1,14 @@
-import { MainTab, StateSetter, SubTab } from "../types/navigation";
+import { useContext } from "react";
 import MainHeader from "./Header/MainHeader";
 import SubHeader from "./Header/SubHeader";
+import { ActiveSubTabContext } from "../context/ActiveSubTabContext";
 
-type Props = {
-  activeSubTab: SubTab;
-  setActiveTab: StateSetter<MainTab>;
-  setActiveSubTab: StateSetter<SubTab>;
-};
+export default function Header() {
+  const activeSubTabContext = useContext(ActiveSubTabContext);
 
-export default function Header(props: Props) {
-  return props.activeSubTab === "None" ? (
-    <MainHeader setActiveTab={props.setActiveTab} />
+  return activeSubTabContext?.value === "None" ? (
+    <MainHeader />
   ) : (
-    <SubHeader
-      activeSubTab={props.activeSubTab}
-      setActiveSubTab={props.setActiveSubTab}
-    />
+    <SubHeader />
   );
 }

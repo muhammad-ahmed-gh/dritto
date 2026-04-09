@@ -1,35 +1,43 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StateSetter, SubTab } from "../../types/navigation";
+import { SubTab } from "../../types/tabs";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-import controlsConfig from "../../data/controlsConfig";
+import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
+import Toggle from "../UI/Toggle";
+import { useContext, useState } from "react";
+import { ActiveSubTabContext } from "../../context/ActiveSubTabContext";
 
-type Props = {
-  activeSubTab: SubTab;
-  setActiveSubTab: StateSetter<SubTab>;
-};
+const getSubTabData = function (subTab: SubTab): OptionConfig | null {
+  let data: OptionConfig | null = null;
 
-const subTabToLabel = function (subTab: SubTab) {
-  let label = "Unknown Label";
-  controlsConfig.categories.forEach((category) => {
-    category.options.forEach((option) => {
-      if (option.optionCode === subTab) label = option.label;
-    });
-  });
-  return label;
-};
+  controlsConfig.categories.forEach(category => {
+    category.options.forEach(option => {
+      if(option.optionCode === subTab)
+        data = option;
+    })
+  })
+  return data;
+}
 
-export default function SubHeader(props: Props) {
+export default function SubHeader() {
+  const activeSubTabContext = useContext(ActiveSubTabContext);
+
+  const [subTabData]  = useState(getSubTabData(activeSubTabContext?.value as SubTab));
+
+
   return (
-    <header className="flex items-center gap-[5px] bg-surface text-text-muted h-[50px] px-[10px] border-b border-border-light">
-      <button
-        className="w-[30px] h-[30px] rounded-[5px] transition-colors duration-300 cursor-pointer hover:bg-[#f1f1f1] "
-        onClick={() => props.setActiveSubTab("None")}
-      >
-        <FontAwesomeIcon icon={faAngleLeft} />
-      </button>
-      <h1 className="font-bold text-[17px] capitalize">
-        {subTabToLabel(props.activeSubTab)}
-      </h1>
+    <header className="flex justify-between items-center bg-surface text-text-muted h-[50px] px-[10px] border-b border-border-light">
+      <div className="flex items-center gap-[5px]">
+        <button
+          className="w-[30px] h-[30px] rounded-[5px] transition-colors duration-300 cursor-pointer hover:bg-[#f1f1f1] "
+          onClick={() => activeSubTabContext?.setValue("None")}
+        >
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </button>
+        <h1 className="font-bold text-[17px] capitalize">
+          {subTabData?.label}
+        </h1>
+      </div>
+      {subTabData?.isTogglable ? <Toggle isActive={false} /> : null}
     </header>
   );
 }

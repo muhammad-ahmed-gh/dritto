@@ -1,10 +1,9 @@
-import { StateSetter, MainTab } from "../../types/navigation";
+import { useContext } from "react";
+import { ActiveTabContext } from "../../context/ActiveTabContext";
 
-type Props = {
-  setActiveTab: StateSetter<MainTab>;
-};
+export default function MainHeader() {
+  const activeTabContext = useContext(ActiveTabContext);
 
-export default function MainHeader(props: Props) {
   return (
     <header className="flex justify-between items-center bg-surface h-[50px] px-[20px] border-b border-border-light">
       <h1 className="italic select-none cursor-pointer font-bold text-text-muted text-[17px]">
@@ -13,7 +12,7 @@ export default function MainHeader(props: Props) {
       <button
         type="button"
         className="text-text-muted cursor-pointer text-[14px]"
-        onClick={() => props.setActiveTab("About")}
+        onClick={() => activeTabContext?.setValue("About")}
       >
         About
       </button>

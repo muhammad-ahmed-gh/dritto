@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import controlsConfig from "../../data/controlsConfig";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ControlOptionTab, StateSetter } from "../../types/navigation";
+import { useContext } from "react";
+import { ActiveSubTabContext } from "../../context/ActiveSubTabContext";
 
 type OptionProp = {
   label: string;
@@ -30,11 +31,9 @@ function Option(props: OptionProp) {
   );
 }
 
-type Props = {
-  setActiveOption: StateSetter<ControlOptionTab>;
-};
+export default function ControlsMainTab() {
+  const activeSubTabContext = useContext(ActiveSubTabContext);
 
-export default function ControlsMainTab(props: Props) {
   return (
     <main className="p-[20px] h-tab-height text-text-muted overflow-y-auto">
       <h3 className="font-bold text-[1.2rem] mb-[5px] capitalize">Controls</h3>
@@ -52,7 +51,7 @@ export default function ControlsMainTab(props: Props) {
                   icon={option.icon}
                   iconColor={option.iconColor}
                   handleClick={() =>
-                    props.setActiveOption(option.optionCode as ControlOptionTab)
+                    activeSubTabContext?.setValue(option.optionCode)
                   }
                 />
               ))}

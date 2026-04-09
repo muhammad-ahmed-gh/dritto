@@ -16,17 +16,20 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ControlOptionTab } from "../types/navigation";
+import { ControlOptionTab } from "../types/tabs";
+
+export type OptionConfig = {
+  label: string;
+  icon: IconProp;
+  iconColor?: string;
+  optionCode: ControlOptionTab;
+  isTogglable: boolean;
+};
 
 type ControlsConfig = {
   categories: {
     title: string;
-    options: {
-      label: string;
-      icon: IconProp;
-      iconColor?: string;
-      optionCode: ControlOptionTab;
-    }[];
+    options: OptionConfig[];
   }[];
 };
 
@@ -36,19 +39,22 @@ const controlsConfig: ControlsConfig = {
       title: "focus",
       options: [
         {
+          optionCode: "BlockSites",
           label: "Block sites",
           icon: faEarthAmericas,
-          optionCode: "BlockSites",
+          isTogglable: true,
         },
         {
+          optionCode: "TabsCount",
           label: "Tabs count",
           icon: faWindowRestore,
-          optionCode: "TabsCount",
+          isTogglable: true,
         },
         {
+          optionCode: "ScrollingLimit",
           label: "Scrolling limit",
           icon: faMobileScreen,
-          optionCode: "ScrollingLimit",
+          isTogglable: true,
         },
       ],
     },
@@ -56,46 +62,53 @@ const controlsConfig: ControlsConfig = {
       title: "social media",
       options: [
         {
+          optionCode: "YouTube",
           label: "YouTube",
           icon: faYoutube,
           iconColor: "#ff0033",
-          optionCode: "YouTube",
+          isTogglable: true,
         },
         {
+          optionCode: "Facebook",
           label: "Facebook",
           icon: faFacebook,
           iconColor: "#0866ff",
-          optionCode: "Facebook",
+          isTogglable: true,
         },
         {
+          optionCode: "Twitter",
           label: "Twitter",
           icon: faXTwitter,
           iconColor: "#0f1419",
-          optionCode: "Twitter",
+          isTogglable: true,
         },
         {
+          optionCode: "TikTok",
           label: "TikTok",
           icon: faTiktok,
           iconColor: "#000000",
-          optionCode: "TikTok",
+          isTogglable: true,
         },
         {
+          optionCode: "Instagram",
           label: "Instagram",
           icon: faInstagram,
           iconColor: "#d64437",
-          optionCode: "Instagram",
+          isTogglable: true,
         },
         {
+          optionCode: "LinkedIn",
           label: "LinkedIn",
           icon: faLinkedin,
           iconColor: "#0a66c2",
-          optionCode: "LinkedIn",
+          isTogglable: true,
         },
         {
+          optionCode: "Pinterest",
           label: "Pinterest",
           icon: faPinterest,
           iconColor: "#e60023",
-          optionCode: "Pinterest",
+          isTogglable: true,
         },
       ],
     },
@@ -103,19 +116,22 @@ const controlsConfig: ControlsConfig = {
       title: "advanced",
       options: [
         {
+          optionCode: "BlockByDomain",
           label: "Block by domain",
           icon: faEarthAsia,
-          optionCode: "BlockByDomain",
+          isTogglable: true,
         },
         {
+          optionCode: "ImportExportSettings",
           label: "Import/export settings",
           icon: faArrowUpFromBracket,
-          optionCode: "ImportExportSettings",
+          isTogglable: false,
         },
         {
+          optionCode: "ResetSettings",
           label: "Reset settings",
           icon: faRotateLeft,
-          optionCode: "ResetSettings",
+          isTogglable: false,
         },
       ],
     },

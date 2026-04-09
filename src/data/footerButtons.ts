@@ -5,7 +5,7 @@ import {
   faClock,
   faSliders,
 } from "@fortawesome/free-solid-svg-icons";
-import { MainTab } from "../types/navigation";
+import { MainTab } from "../types/tabs";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type ButtonsData = { icon: IconProp; label: string; tabName: MainTab }[];
