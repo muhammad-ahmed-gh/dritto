@@ -12,44 +12,47 @@ import PinterestTab from "./Controls/PinterestTab";
 import BlockByDomainTab from "./Controls/BlockByDomainTab";
 import ImportExportSettingsTab from "./Controls/ImportExportSettingsTab";
 import ResetSettingsTab from "./Controls/ResetSettingsTab";
-// import { ControlsData } from "../types/ControlsData";
-import { useContext, /*useEffect, useState*/ } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ActiveSubTabContext } from "../context/ActiveSubTabContext";
+import { ControlsData } from "../types/ControlsData";
+import { loadControlsData } from "../data/storage";
+import Loading from "./Loading";
 
 export default function Controls() {
   const activeSubTabContext = useContext(ActiveSubTabContext);
-  // const [controlsData, setControlsData] = useState<ControlsData | null>(null);
+  const [controlsData, setControlsData] = useState<ControlsData | null>(null);
 
-  // useEffect(() => {
-  //   chrome.storage.local.get(["controls"])
-  //   .then(res => setControlsData(res.controls as ControlsData));
-  // }, []);
+  useEffect(() => {
+    loadControlsData().then((data) => setControlsData(data));
+  }, []);
 
-  switch(activeSubTabContext?.value) {
+  if(controlsData === null) return <Loading />
+
+  switch (activeSubTabContext?.value) {
     case "None":
-      return <ControlsMainTab />
+      return <ControlsMainTab />;
     case "BlockSites":
-      return <BlockSitesTab />;
+      return <BlockSitesTab tabData={controlsData.blockSites} />;
     case "TabsCount":
-      return <TabsCountTab />;
+      return <TabsCountTab tabData={controlsData.tabsCount} />;
     case "ScrollingLimit":
-      return <ScrollingLimitTab />;
+      return <ScrollingLimitTab tabData={controlsData.scrollingLimit} />;
     case "YouTube":
-      return <YouTubeTab />;
+      return <YouTubeTab tabData={controlsData.youtube} />;
     case "Facebook":
-      return <FacebookTab />;
+      return <FacebookTab tabData={controlsData.facebook} />;
     case "Twitter":
-      return <TwitterTab />;
+      return <TwitterTab tabData={controlsData.twitter} />;
     case "TikTok":
-      return <TikTokTab />;
+      return <TikTokTab tabData={controlsData.tiktok} />;
     case "Instagram":
-      return <InstagramTab />;
+      return <InstagramTab tabData={controlsData.instagram} />;
     case "LinkedIn":
-      return <LinkedInTab />;
+      return <LinkedInTab tabData={controlsData.linkedin} />;
     case "Pinterest":
-      return <PinterestTab />;
+      return <PinterestTab tabData={controlsData.pinterest} />;
     case "BlockByDomain":
-      return <BlockByDomainTab />;
+      return <BlockByDomainTab tabData={controlsData.blockByDomain} />;
     case "ImportExportSettings":
       return <ImportExportSettingsTab />;
     case "ResetSettings":

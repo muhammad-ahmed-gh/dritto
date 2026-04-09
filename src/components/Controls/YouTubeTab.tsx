@@ -1,18 +1,15 @@
-// import { useState } from "react";
-// import { OptionData, YoutubeSettings } from "../../types/ControlsData";
-// import { UIData } from "../../types/UIData";
+import { OptionData, YoutubeSettings } from "../../types/ControlsData";
 
-// type Props = {
-//   subTabData: OptionData<YoutubeSettings> | undefined;
-//   uiData: UIData;
-// };
+type Props = {
+  tabData: OptionData<YoutubeSettings>;
+};
 
 const setMaxRecommendedVideos = function (event: React.ChangeEvent) {
   const value = (event.currentTarget as HTMLInputElement).value;
   console.log(value);
 };
 
-export default function YouTubeTab(/*props: Props*/) {
+export default function YouTubeTab(props: Props) {
 
   return (
     <main className="p-[20px] h-tab-height text-text-muted overflow-y-auto">
