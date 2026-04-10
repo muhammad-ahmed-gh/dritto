@@ -5,7 +5,7 @@ import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
 import Toggle from "../UI/Toggle";
 import { useState } from "react";
 import { useActiveSubTab } from "../../hooks/useActiveSubTab";
-import { useUserData } from "../../hooks/useUserData";
+import { useAppData } from "../../hooks/useAppData";
 
 const getSubTabData = function (subTab: SubTab): OptionConfig | null {
   let data: OptionConfig | null = null;
@@ -20,7 +20,7 @@ const getSubTabData = function (subTab: SubTab): OptionConfig | null {
 
 export default function SubHeader() {
   const activeSubTab = useActiveSubTab();
-  const userData = useUserData();
+  const userData = useAppData();
 
   const [subTabData] = useState(
     getSubTabData(activeSubTab.value),

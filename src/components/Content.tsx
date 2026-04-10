@@ -22,7 +22,5 @@ export function Content() {
       return <Controls />;
     case "About":
       return <About />;
-    default:
-      return <main className="p-[20px] h-tab-height"></main>;
   }
 }

@@ -4,22 +4,19 @@ import Header from "../components/Header";
 import "/src/styles/index.css";
 import { ActiveTabContextProvider } from "../providers/ActiveTabProvider";
 import { ActiveSubTabProvider } from "../providers/ActiveSubTabProvider";
-import { UIDataProvider } from "../providers/UIDataProvider";
-import { UserDataProvider } from "../providers/UserDataProvider";
+import { AppDataProvider } from "../providers/AppDataProvider";
 
 function App() {
   return (
-    <UIDataProvider>
-      <UserDataProvider>
-        <ActiveTabContextProvider>
-          <ActiveSubTabProvider>
-            <Header />
-            <Content />
-            <Footer />
-          </ActiveSubTabProvider>
-        </ActiveTabContextProvider>
-      </UserDataProvider>
-    </UIDataProvider>
+    <AppDataProvider>
+      <ActiveTabContextProvider>
+        <ActiveSubTabProvider>
+          <Header />
+          <Content />
+          <Footer />
+        </ActiveSubTabProvider>
+      </ActiveTabContextProvider>
+    </AppDataProvider>
   );
 }
 
