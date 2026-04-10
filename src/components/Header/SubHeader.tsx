@@ -3,9 +3,9 @@ import { SubTab } from "../../types/tabs";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
 import Toggle from "../UI/Toggle";
-import { useContext, useState } from "react";
-import { UserDataContext } from "../../context/UserDataContext";
+import { useState } from "react";
 import { useActiveSubTab } from "../../hooks/useActiveSubTab";
+import { useUserData } from "../../hooks/useUserData";
 
 const getSubTabData = function (subTab: SubTab): OptionConfig | null {
   let data: OptionConfig | null = null;
@@ -20,7 +20,7 @@ const getSubTabData = function (subTab: SubTab): OptionConfig | null {
 
 export default function SubHeader() {
   const activeSubTab = useActiveSubTab();
-  const userDataContext = useContext(UserDataContext);
+  const userData = useUserData();
 
   const [subTabData] = useState(
     getSubTabData(activeSubTab.value),
@@ -41,7 +41,7 @@ export default function SubHeader() {
       </div>
       {subTabData?.isTogglable ? (
         <Toggle
-          isActive={userDataContext!.value.controls.blockByDomain.enabled}
+          isActive={userData.value.controls.blockByDomain.enabled}
         />
       ) : null}
     </header>

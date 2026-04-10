@@ -12,13 +12,12 @@ import PinterestTab from "./Controls/PinterestTab";
 import BlockByDomainTab from "./Controls/BlockByDomainTab";
 import ImportExportSettingsTab from "./Controls/ImportExportSettingsTab";
 import ResetSettingsTab from "./Controls/ResetSettingsTab";
-import { useContext } from "react";
-import { UserDataContext } from "../context/UserDataContext";
 import { useActiveSubTab } from "../hooks/useActiveSubTab";
+import { useUserData } from "../hooks/useUserData";
 
 export default function Controls() {
   const activeSubTab = useActiveSubTab();
-  const controlsData = useContext(UserDataContext)?.value?.controls;
+  const controlsData = useUserData().value.controls;
 
   switch (activeSubTab.value) {
     case "None":
