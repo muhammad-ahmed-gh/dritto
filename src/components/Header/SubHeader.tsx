@@ -4,32 +4,34 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
 import Toggle from "../UI/Toggle";
 import { useContext, useState } from "react";
-import { ActiveSubTabContext } from "../../context/ActiveSubTabContext";
+import { UserDataContext } from "../../context/UserDataContext";
+import { useActiveSubTab } from "../../hooks/useActiveSubTab";
 
 const getSubTabData = function (subTab: SubTab): OptionConfig | null {
   let data: OptionConfig | null = null;
 
-  controlsConfig.categories.forEach(category => {
-    category.options.forEach(option => {
-      if(option.optionCode === subTab)
-        data = option;
-    })
-  })
+  controlsConfig.categories.forEach((category) => {
+    category.options.forEach((option) => {
+      if (option.optionCode === subTab) data = option;
+    });
+  });
   return data;
-}
+};
 
 export default function SubHeader() {
-  const activeSubTabContext = useContext(ActiveSubTabContext);
+  const activeSubTab = useActiveSubTab();
+  const userDataContext = useContext(UserDataContext);
 
-  const [subTabData]  = useState(getSubTabData(activeSubTabContext?.value as SubTab));
-
+  const [subTabData] = useState(
+    getSubTabData(activeSubTab.value),
+  );
 
   return (
     <header className="flex justify-between items-center bg-surface text-text-muted h-[50px] px-[10px] border-b border-border-light">
       <div className="flex items-center gap-[5px]">
         <button
           className="w-[30px] h-[30px] rounded-[5px] transition-colors duration-300 cursor-pointer hover:bg-[#f1f1f1] "
-          onClick={() => activeSubTabContext?.setValue("None")}
+          onClick={() => activeSubTab.setValue("None")}
         >
           <FontAwesomeIcon icon={faAngleLeft} />
         </button>
@@ -37,7 +39,11 @@ export default function SubHeader() {
           {subTabData?.label}
         </h1>
       </div>
-      {subTabData?.isTogglable ? <Toggle isActive={false} /> : null}
+      {subTabData?.isTogglable ? (
+        <Toggle
+          isActive={userDataContext!.value.controls.blockByDomain.enabled}
+        />
+      ) : null}
     </header>
   );
 }

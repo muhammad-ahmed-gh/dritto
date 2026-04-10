@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { ActiveTabContext } from "../../context/ActiveTabContext";
+import { useActiveTab } from "../../hooks/useActiveTab";
 
 export default function MainHeader() {
-  const activeTabContext = useContext(ActiveTabContext);
+  const activeTab = useActiveTab();
 
   return (
     <header className="flex justify-between items-center bg-surface h-[50px] px-[20px] border-b border-border-light">
@@ -12,7 +11,7 @@ export default function MainHeader() {
       <button
         type="button"
         className="text-text-muted cursor-pointer text-[14px]"
-        onClick={() => activeTabContext?.setValue("About")}
+        onClick={() => activeTab.setValue("About")}
       >
         About
       </button>

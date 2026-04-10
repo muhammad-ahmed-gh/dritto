@@ -1,14 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MainTab, StateSetter, SubTab } from "../types/tabs";
 import buttonsData from "../data/footerButtons";
+import { useActiveTab } from "../hooks/useActiveTab";
+import { useActiveSubTab } from "../hooks/useActiveSubTab";
 
-type FooterProps = {
-  activeTab: MainTab;
-  setActiveTab: StateSetter<MainTab>;
-  setActiveSubTab: StateSetter<SubTab>;
-};
+export default function Footer() {
+  const activeTab = useActiveTab();
+  const activeSubTab = useActiveSubTab();
 
-export default function Footer(props: FooterProps) {
   return (
     <footer className="bg-surface py-[10px] px-[20px] flex justify-evenly items-center">
       {buttonsData.map((buttonData) => (
@@ -17,10 +15,10 @@ export default function Footer(props: FooterProps) {
           className="flex flex-col justify-center items-center gap-y-[5px]"
         >
           <button
-            className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === props.activeTab ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-text-muted hover:bg-[#f1f1f1]"}`}
+            className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === activeTab.value ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-text-muted hover:bg-[#f1f1f1]"}`}
             onClick={() => {
-              props.setActiveTab(buttonData.tabName);
-              props.setActiveSubTab("None");
+              activeTab.setValue(buttonData.tabName);
+              activeSubTab.setValue("None");
             }}
           >
             <FontAwesomeIcon icon={buttonData.icon} />

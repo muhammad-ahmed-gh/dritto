@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import MainHeader from "./Header/MainHeader";
 import SubHeader from "./Header/SubHeader";
-import { ActiveSubTabContext } from "../context/ActiveSubTabContext";
+import { useActiveSubTab } from "../hooks/useActiveSubTab";
 
 export default function Header() {
-  const activeSubTabContext = useContext(ActiveSubTabContext);
+  const activeSubTab = useActiveSubTab();
 
-  return activeSubTabContext?.value === "None" ? (
+  return activeSubTab.value === "None" ? (
     <MainHeader />
   ) : (
     <SubHeader />

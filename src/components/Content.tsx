@@ -4,16 +4,12 @@ import Home from "./Home";
 import Controls from "./Controls";
 import Pomodoro from "./Pomodoro";
 import Tasks from "./Tasks";
-import { StateSetter, SubTab, MainTab } from "../types/tabs";
+import { useActiveTab } from "../hooks/useActiveTab";
 
-type Props = {
-  activeTab: MainTab;
-  activeSubTab: SubTab;
-  setActiveSubTab: StateSetter<SubTab>;
-};
+export function Content() {
+  const activeTab = useActiveTab();
 
-export function Content(props: Props) {
-  switch (props.activeTab) {
+  switch (activeTab.value) {
     case "Home":
       return <Home />;
     case "Calendar":

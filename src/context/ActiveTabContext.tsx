@@ -1,9 +1,11 @@
 import { createContext } from "react";
 import { MainTab, StateSetter } from "../types/tabs";
 
-type InputType = {
+type ActiveTabContextType = {
   value: MainTab;
   setValue: StateSetter<MainTab>;
-}
+};
 
-export const ActiveTabContext = createContext<InputType | null>(null);
+export const ActiveTabContext = createContext<ActiveTabContextType | undefined>(
+  undefined,
+);

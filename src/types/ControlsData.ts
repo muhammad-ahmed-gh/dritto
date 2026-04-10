@@ -1,5 +1,5 @@
 export type BlockSitesSettings = {
-  blockSites: string[];
+  blockedSites: string[];
   whitelist: string[];
 };
 
