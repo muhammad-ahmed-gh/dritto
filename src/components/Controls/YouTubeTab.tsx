@@ -1,29 +1,55 @@
-import { OptionData, YoutubeSettings } from "../../types/ControlsData";
+import clsx from "clsx";
+import { youtubeConfig } from "../../data/controlsTabsConfig/youtubeConfig";
+import { useAppData } from "../../hooks/useAppData";
+import NumericInputField from "../UI/NumericInputField";
+import TextInputField from "../UI/TextInputField";
+import ToggleInputField from "../UI/ToggleInputField";
 
-type Props = {
-  tabData: OptionData<YoutubeSettings>;
-};
+const config = youtubeConfig;
 
-const setMaxRecommendedVideos = function (event: React.ChangeEvent) {
-  const value = (event.currentTarget as HTMLInputElement).value;
-  console.log(value);
-};
-
-export default function YouTubeTab(props: Props) {
-  console.log(props);
+export default function YouTubeTab() {
+  const appData = useAppData();
+  const tabData = appData.value.controls.youtube;
 
   return (
-    <main className="p-[20px] h-tab-height text-text-muted overflow-y-auto">
-      <div className="flex justify-between items-center">
-        <span>Max recommended videos</span>
-        <input
-          className="w-[70px] border border-[#dadada] rounded-[5px] p-[5px_10px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-0 focus:border-2 focus:border-primary"
-          type="number"
-          defaultValue={10}
-          min={0}
-          onChange={setMaxRecommendedVideos}
-        />
-      </div>
+    <main
+      className={clsx(
+        "p-[20px] h-tab-height flex flex-col gap-[20px] text-text-muted overflow-y-auto",
+        !tabData.enabled && "opacity-50 pointer-events-none",
+      )}
+    >
+      {config.map((entry) => {
+        switch (entry.type) {
+          case "textInputField":
+            return (
+              <TextInputField
+                key={entry.id}
+                label={entry.label}
+                appDataKey={entry.appDataKey}
+                togglable={entry.togglable}
+              />
+            );
+          case "numericInputField":
+            return (
+              <NumericInputField
+                key={entry.id}
+                label={entry.label}
+                appDataKey={entry.appDataMap}
+                togglable={entry.togglable}
+                minValue={entry.minValue}
+                maxValue={entry.maxValue}
+              />
+            );
+          case "toggle":
+            return (
+              <ToggleInputField
+                key={entry.id}
+                label={entry.label}
+                appDataKey={entry.appDataMap}
+              />
+            );
+        }
+      })}
     </main>
   );
 }

@@ -35,7 +35,7 @@ chrome.runtime.onInstalled.addListener(() => {
         },
       },
       youtube: {
-        enabled: false,
+        enabled: true,
         settings: {
           maxHomePageVideos: 0,
           maxSuggestedVideos: 0,

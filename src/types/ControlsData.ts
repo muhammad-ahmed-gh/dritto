@@ -77,7 +77,7 @@ export type BlockByDomainSettings = {
 export type OptionData<T> = {
   enabled: boolean;
   settings: T;
-}
+};
 
 export type ControlsData = {
   blockSites: OptionData<BlockSitesSettings>;

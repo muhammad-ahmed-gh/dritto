@@ -13,40 +13,26 @@ import BlockByDomainTab from "./Controls/BlockByDomainTab";
 import ImportExportSettingsTab from "./Controls/ImportExportSettingsTab";
 import ResetSettingsTab from "./Controls/ResetSettingsTab";
 import { useActiveSubTab } from "../hooks/useActiveSubTab";
-import { useAppData } from "../hooks/useAppData";
 
 export default function Controls() {
   const activeSubTab = useActiveSubTab();
-  const controlsData = useAppData().value.controls;
+  const tabs = {
+    None: ControlsMainTab,
+    BlockSites: BlockSitesTab,
+    TabsCount: TabsCountTab,
+    ScrollingLimit: ScrollingLimitTab,
+    YouTube: YouTubeTab,
+    Facebook: FacebookTab,
+    Twitter: TwitterTab,
+    TikTok: TikTokTab,
+    Instagram: InstagramTab,
+    LinkedIn: LinkedInTab,
+    Pinterest: PinterestTab,
+    BlockByDomain: BlockByDomainTab,
+    ImportExportSettings: ImportExportSettingsTab,
+    ResetSettings: ResetSettingsTab,
+  };
 
-  switch (activeSubTab.value) {
-    case "None":
-      return <ControlsMainTab />;
-    case "BlockSites":
-      return <BlockSitesTab tabData={controlsData.blockSites} />
-    case "TabsCount":
-      return <TabsCountTab tabData={controlsData.tabsCount} />;
-    case "ScrollingLimit":
-      return <ScrollingLimitTab tabData={controlsData.scrollingLimit} />;
-    case "YouTube":
-      return <YouTubeTab tabData={controlsData.youtube} />;
-    case "Facebook":
-      return <FacebookTab tabData={controlsData.facebook} />;
-    case "Twitter":
-      return <TwitterTab tabData={controlsData.twitter} />;
-    case "TikTok":
-      return <TikTokTab tabData={controlsData.tiktok} />;
-    case "Instagram":
-      return <InstagramTab tabData={controlsData.instagram} />;
-    case "LinkedIn":
-      return <LinkedInTab tabData={controlsData.linkedin} />;
-    case "Pinterest":
-      return <PinterestTab tabData={controlsData.pinterest} />;
-    case "BlockByDomain":
-      return <BlockByDomainTab tabData={controlsData.blockByDomain} />;
-    case "ImportExportSettings":
-      return <ImportExportSettingsTab />;
-    case "ResetSettings":
-      return <ResetSettingsTab />;
-  }
+  const CurrentSubTab = tabs[activeSubTab.value];
+  return <CurrentSubTab />;
 }

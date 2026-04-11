@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SubTab } from "../../types/tabs";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
-import Toggle from "../UI/Toggle";
+import ToggleButton from "../UI/ToggleButton";
 import { useState } from "react";
 import { useActiveSubTab } from "../../hooks/useActiveSubTab";
-import { useAppData } from "../../hooks/useAppData";
+// import { useAppData } from "../../hooks/useAppData";
 
 const getSubTabData = function (subTab: SubTab): OptionConfig | null {
   let data: OptionConfig | null = null;
@@ -20,11 +20,9 @@ const getSubTabData = function (subTab: SubTab): OptionConfig | null {
 
 export default function SubHeader() {
   const activeSubTab = useActiveSubTab();
-  const userData = useAppData();
+  // const userData = useAppData();
 
-  const [subTabData] = useState(
-    getSubTabData(activeSubTab.value),
-  );
+  const [subTabData] = useState(getSubTabData(activeSubTab.value));
 
   return (
     <header className="flex justify-between items-center bg-surface text-text-muted h-[50px] px-[10px] border-b border-border-light">
@@ -40,8 +38,9 @@ export default function SubHeader() {
         </h1>
       </div>
       {subTabData?.isTogglable ? (
-        <Toggle
-          isActive={userData.value.controls.blockByDomain.enabled}
+        <ToggleButton
+          // isActive={userData.value.controls.blockByDomain.enabled}
+          appDatakey={"hideDescription"}
         />
       ) : null}
     </header>
