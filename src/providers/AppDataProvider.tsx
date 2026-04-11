@@ -10,20 +10,33 @@ export function AppDataProvider({ children }: { children: Children }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    chrome.storage.local.get(["controls", "tasks", "pomodoro", "calendar", "ui"])
-    .then(data => setAppData(data as AppData))
-    .catch(error => {
-      console.log("ERROR: Couldn't load user data correctly", error);
-      setError("ERROR: Couldn't load user data correctly");
-    })
+    chrome.storage.local
+      .get(["controls", "tasks", "pomodoro", "calendar", "ui"])
+      .then((data) => {
+        if (
+          !("controls" in data) ||
+          !("pomodoro" in data) ||
+          !("calendar" in data) ||
+          !("tasks" in data) ||
+          !("ui" in data)
+        ) {
+          setError("ERROR: Couldn't load app data correctly");
+        } else {
+          setAppData(data as AppData);
+        }
+      })
+      .catch((error) => {
+        console.log("ERROR: An error occurred while fetching app data", error);
+        setError("ERROR: An error occurred while fetching app data");
+      });
   }, []);
 
-  if(error) return <Error message={error} />;
-  else if(!appData) return <Loading />
+  if (error) return <Error message={error} />;
+  else if (!appData) return <Loading />;
 
   return (
-    <AppDataContext.Provider value={{value: appData, setValue: setAppData}}>
+    <AppDataContext.Provider value={{ value: appData, setValue: setAppData }}>
       {children}
     </AppDataContext.Provider>
-  )
+  );
 }

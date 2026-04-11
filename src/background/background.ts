@@ -119,6 +119,9 @@ chrome.runtime.onInstalled.addListener(() => {
       theme: "system",
       fontFamily: "Saira",
     },
+    calendar: {
+      events: [],
+    },
   };
 
   chrome.storage.local.set(scaffoldedData);
