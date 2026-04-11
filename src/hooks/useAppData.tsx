@@ -3,6 +3,6 @@ import { AppDataContext } from "../context/AppDataContext";
 
 export function useAppData() {
   const appData = useContext(AppDataContext);
-  if(!appData) throw new Error("ERROR: Recieved invalid app data");
+  if(!appData) throw new Error("ERROR: Received invalid app data");
   return appData;
 }
