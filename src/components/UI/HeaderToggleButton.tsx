@@ -1,16 +1,9 @@
 import clsx from "clsx";
 import { useAppData } from "../../hooks/useAppData";
-import { YoutubeSettings } from "../../types/ControlsData";
 
-type Props = {
-  appDatakey: keyof YoutubeSettings;
-};
-
-export default function ToggleButton(props: Props) {
+export default function HeaderToggleButton() {
   const appData = useAppData();
-  const isActive = appData.value.controls.youtube.settings[props.appDatakey];
-
-
+  const isActive = appData.value.controls.youtube.enabled;
 
   const handleClick = function () {
     const newAppData = {
@@ -19,10 +12,7 @@ export default function ToggleButton(props: Props) {
         ...appData.value.controls,
         youtube: {
           ...appData.value.controls.youtube,
-          settings: {
-            ...appData.value.controls.youtube.settings,
-            [props.appDatakey]: !isActive,
-          },
+          enabled: !isActive,
         },
       },
     };

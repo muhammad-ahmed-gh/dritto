@@ -2,10 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SubTab } from "../../types/tabs";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import controlsConfig, { OptionConfig } from "../../data/controlsConfig";
-import ToggleButton from "../UI/ToggleButton";
+import HeaderToggleButton from "../UI/HeaderToggleButton";
 import { useState } from "react";
 import { useActiveSubTab } from "../../hooks/useActiveSubTab";
-// import { useAppData } from "../../hooks/useAppData";
 
 const getSubTabData = function (subTab: SubTab): OptionConfig | null {
   let data: OptionConfig | null = null;
@@ -20,7 +19,6 @@ const getSubTabData = function (subTab: SubTab): OptionConfig | null {
 
 export default function SubHeader() {
   const activeSubTab = useActiveSubTab();
-  // const userData = useAppData();
 
   const [subTabData] = useState(getSubTabData(activeSubTab.value));
 
@@ -37,12 +35,7 @@ export default function SubHeader() {
           {subTabData?.label}
         </h1>
       </div>
-      {subTabData?.isTogglable ? (
-        <ToggleButton
-          // isActive={userData.value.controls.blockByDomain.enabled}
-          appDatakey={"hideDescription"}
-        />
-      ) : null}
+      {subTabData?.isTogglable ? <HeaderToggleButton /> : null}
     </header>
   );
 }
