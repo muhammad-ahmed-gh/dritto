@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AppDataContext } from "../context/AppDataContext";
-import { Children } from "../types/Children";
+import { Children } from "../types/general";
 import { AppData } from "../types/AppData";
 import Loading from "../components/Loading";
 import Error from "../components/Error";

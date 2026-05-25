@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Section } from "../types/tabs";
 import { ActiveSectionContext } from "../context/ActiveSectionContext";
-import { Children } from "../types/Children";
+import { Children } from "../types/general";
 
 export function ActiveSectionProvider({ children }: { children: Children }) {
   const [activeSection, setActiveTab] = useState<Section>("Home");

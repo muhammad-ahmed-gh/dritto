@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Section, StateSetter } from "../types/tabs";
+import { Section, StateSetter } from "../types/general";
 
 type ActiveSectionContextType = {
   value: Section;
