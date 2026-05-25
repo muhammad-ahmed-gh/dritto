@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ActiveTabContext } from "../context/ActiveTabContext";
+import { ActiveSectionContext } from "../context/ActiveSectionContext";
 
 export const useActiveTab = function () {
-  const activeTab = useContext(ActiveTabContext);
+  const activeTab = useContext(ActiveSectionContext);
   if (!activeTab) throw new Error("ERROR: invalid active tab value");
   return activeTab;
 };

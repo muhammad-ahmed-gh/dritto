@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Clock from "./Clock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
@@ -35,7 +34,6 @@ export default function Home() {
   return (
     <main className="p-[20px] h-tab-height">
       {greeting}
-      <Clock time={date} />
 
       <p className="text-[14px] text-text-muted block text-center mt-[20px]">
         You have 2 pending tasks
