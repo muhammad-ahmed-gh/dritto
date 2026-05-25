@@ -1,34 +1,29 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import buttonsData from "../data/footerButtons";
-import { useActiveTab } from "../hooks/useActiveTab";
-import { useActiveSubTab } from "../hooks/useActiveSubTab";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 export default function Footer() {
-  const activeTab = useActiveTab();
-  const activeSubTab = useActiveSubTab();
+  const activeSection = useActiveSection();
+
+  const goToAbout = () => {
+    activeSection.setValue("About");
+  };
 
   return (
-    <footer className="bg-surface py-[10px] px-[20px] flex justify-evenly items-center">
-      {buttonsData.map((buttonData) => (
-        <div
-          key={buttonData.label}
-          className="flex flex-col justify-center items-center gap-y-[5px]"
-        >
-          <button
-            className={`flex justify-center items-center w-[50px] h-[50px] rounded-full cursor-pointer transition-[background-color] duration-300 ${buttonData.tabName === activeTab.value ? "text-white bg-primary hover:bg-[#2cdd58]" : "text-text-muted hover:bg-[#f1f1f1]"}`}
-            onClick={() => {
-              activeTab.setValue(buttonData.tabName);
-              activeSubTab.setValue("None");
-            }}
-          >
-            <FontAwesomeIcon icon={buttonData.icon} />
-          </button>
-
-          <span className="text-[13px] capitalize text-text-muted">
-            {buttonData.label}
-          </span>
-        </div>
-      ))}
+    <footer
+      className="
+      bg-background p-main-padding
+      flex justify-between items-center
+      text-[15px] relative
+      before:absolute before:top-0 before:left-1/2
+      before:translate-x-[-50%] before:h-[1px]
+      before:w-[calc(100%-40px)] before:bg-[#ddd]"
+    >
+      <span className="text-text-muted">dritto v1.0</span>
+      <span
+        onClick={goToAbout}
+        className="text-text-dark cursor-pointer underline"
+      >
+        about
+      </span>
     </footer>
   );
 }

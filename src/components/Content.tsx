@@ -1,25 +1,21 @@
-import About from "./About";
-import Calendar from "./Calendar";
 import Home from "./Home";
-import Controls from "./Controls";
-import Pomodoro from "./Pomodoro";
-import Tasks from "./Tasks";
-import { useActiveTab } from "../hooks/useActiveTab";
+import { useActiveSection } from "../hooks/useActiveSection";
+import About from "./About";
 
 export function Content() {
-  const activeTab = useActiveTab();
+  const activeSection = useActiveSection();
 
-  switch (activeTab.value) {
+  switch (activeSection.value) {
     case "Home":
       return <Home />;
-    case "Calendar":
-      return <Calendar />;
-    case "Tasks":
-      return <Tasks />;
-    case "Pomodoro":
-      return <Pomodoro />;
-    case "Controls":
-      return <Controls />;
+    case "BlockSites":
+      return <></>;
+    case "Scrolling":
+      return <></>;
+    case "Tabs":
+      return <></>;
+    case "SocialMedia":
+      return <></>;
     case "About":
       return <About />;
   }
