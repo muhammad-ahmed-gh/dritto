@@ -67,16 +67,31 @@ function LangButton() {
   return (
     <span
       onClick={handleClick}
-      className="w-[30px] h-[30px] rounded-[7px] text-text-dark border-1 border-text-dark flex justify-center items-center text-[14px] cursor-pointer select-none "
+      className="relative w-[30px] h-[30px] rounded-[7px] text-text-dark border-1 border-text-dark text-[14px] cursor-pointer select-none "
     >
-      {lang}
+      <span
+        className={clsx(
+          "absolute top-1/2 left-1/2 translate-[-50%] transition-opacity duration-200",
+          lang === "AR" ? "opacity-0" : "opacity-100",
+        )}
+      >
+        AR
+      </span>
+      <span
+        className={clsx(
+          "absolute top-1/2 left-1/2 translate-[-50%] transition-opacity duration-200",
+          lang === "AR" ? "opacity-100" : "opacity-0",
+        )}
+      >
+        EN
+      </span>
     </span>
   );
 }
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-[10px] px-[20px]">
+    <header className="bg-background flex justify-between items-center p-main-padding">
       <ThemeButton />
       <Logo />
       <LangButton />

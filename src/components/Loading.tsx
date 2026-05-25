@@ -1,3 +1,5 @@
+import ContentContainer from "./ContentContainer";
+
 export default function Loading() {
-  return <main className="p-[20px] h-tab-height">loading</main>
+  return <ContentContainer>Loading</ContentContainer>;
 }

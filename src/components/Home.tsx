@@ -1,50 +1,21 @@
-import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import ContentContainer from "./ContentContainer";
+
 export default function Home() {
-  const [date, setDate] = useState(new Date());
-  const hour = date.getHours();
-
-  let greeting: string;
-  switch (true) {
-    case hour < 5:
-      greeting = "Good night";
-      break;
-    case hour < 12:
-      greeting = "Good morning";
-      break;
-    case hour < 18:
-      greeting = "Good afternoon";
-      break;
-    case hour < 22:
-      greeting = "Good evening";
-      break;
-    default:
-      greeting = "Good night";
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDate(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <main className="p-[20px] h-tab-height">
-      {greeting}
-
-      <p className="text-[14px] text-text-muted block text-center mt-[20px]">
-        You have 2 pending tasks
+    <ContentContainer>
+      <p className="text-[15px] text-text-muted text-center w-[180px] mt-[20px] mx-auto">
+        Come in and control your
+        bad habits
       </p>
 
       <button
         type="button"
-        className="flex justify-center items-center mx-auto mt-[20px] text-primary w-[35px] h-[35px] rounded-full bg-white hover:bg-[#fafafa] transition-colors duration-300 animate-bounce cursor-pointer border-[#e5e5e5] border [animation-duration:2s] "
+        className="flex justify-center items-center mx-auto mt-[30px] text-primary text-[14px] w-[30px] h-[30px] rounded-full bg-white hover:bg-[#fafafa] transition-colors duration-300 animate-bounce cursor-pointer border-[#e5e5e5] border [animation-duration:1.5s] "
       >
         <FontAwesomeIcon icon={faArrowDown} />
       </button>
-    </main>
+    </ContentContainer>
   );
 }

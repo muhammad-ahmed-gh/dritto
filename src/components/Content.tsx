@@ -1,5 +1,6 @@
 import Home from "./Home";
-import { useActiveTab as useActiveSection } from "../hooks/useActiveSection";
+import { useActiveSection } from "../hooks/useActiveSection";
+import About from "./About";
 
 export function Content() {
   const activeSection = useActiveSection();
@@ -16,6 +17,6 @@ export function Content() {
     case "SocialMedia":
       return <></>;
     case "About":
-      return <></>;
+      return <About />;
   }
 }
