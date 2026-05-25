@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { AppData } from "../types/AppData";
-import { StateSetter } from "../types/tabs";
+import { StateSetter } from "../types/general";
 
 type AppDataContextType = {
   value: AppData;

@@ -26,10 +26,12 @@ export default function CategoryBox(props: Props) {
         cursor-pointer shadow-md
         transition-shadow duration-300
         select-none
-        hover:shadow-lg"
+        hover:shadow-lg
+        group
+        "
     >
       <div className="flex gap-[15px]">
-        <div className="bg-[#d8eef2] text-text-dark text-[20px] w-[50px] rounded-[10px] flex justify-center items-center shrink-0">
+        <div className="bg-[#d8eef2] text-text-dark text-[22px] w-[50px] rounded-[10px] flex justify-center items-center shrink-0">
           <FontAwesomeIcon icon={props.icon} />
         </div>
         <div>
@@ -37,7 +39,7 @@ export default function CategoryBox(props: Props) {
           <p className="line-clamp-2 text-text-muted text-[14px]">{props.description}</p>
         </div>
       </div>
-      <span className="text-text-dark">
+      <span className="text-text-dark group-hover:animate-wiggle">
         <FontAwesomeIcon icon={faChevronRight} />
       </span>
     </div>

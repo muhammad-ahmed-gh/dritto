@@ -19,7 +19,7 @@ function Star(props: { indx: number }) {
 
 function Logo() {
   return (
-    <div className="select-none cursor-pointer">
+    <div className="flex flex-col items-center select-none cursor-pointer">
       <h1 className="font-bold text-[30px] text-text-dark">dritto</h1>
       <span className="stars flex justify-center gap-[3px]">
         <Star indx={1} />
