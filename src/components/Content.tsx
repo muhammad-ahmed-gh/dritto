@@ -1,11 +1,11 @@
-import Home from "./Home";
+import Home from "./sections/Home";
 import { useActiveSection } from "../hooks/useActiveSection";
-import About from "./About";
+import About from "./sections/About";
 import Error from "./Error";
-import BlockSitesSection from "./BlockSitesSection";
-import ScrollingSection from "./ScrollingSection";
-import TabsSection from "./TabsSection";
-import SocialMediaSection from "./SocialMediaSection";
+import BlockSitesSection from "./sections/BlockSitesSection";
+import ScrollingSection from "./sections/ScrollingSection";
+import TabsSection from "./sections/TabsSection";
+import SocialMediaSection from "./sections/SocialMediaSection";
 
 export function Content() {
   const activeSection = useActiveSection();
@@ -16,13 +16,13 @@ export function Content() {
     case "About":
       return <About />;
     case "BlockSites":
-      return <BlockSitesSection />
+      return <BlockSitesSection />;
     case "Scrolling":
-      return <ScrollingSection />
+      return <ScrollingSection />;
     case "Tabs":
-      return <TabsSection />
+      return <TabsSection />;
     case "SocialMedia":
-      return <SocialMediaSection />
+      return <SocialMediaSection />;
     default:
       return <Error message="ERROR: Trying to render an invalid section!" />;
   }

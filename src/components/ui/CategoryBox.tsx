@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Section } from "../types/Sections";
+import { Section } from "../../types/Sections";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { useActiveSection } from "../../hooks/useActiveSection";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
@@ -35,8 +35,12 @@ export default function CategoryBox(props: Props) {
           <FontAwesomeIcon icon={props.icon} />
         </div>
         <div>
-          <h3 className="font-bold text-[17px] mb-[5px]">{props.title}</h3>
-          <p className="line-clamp-2 text-text-muted text-[14px]">{props.description}</p>
+          <h3 className="font-bold text-text-dark text-[17px] mb-[5px]">
+            {props.title}
+          </h3>
+          <p className="line-clamp-2 text-text-muted text-[14px]">
+            {props.description}
+          </p>
         </div>
       </div>
       <span className="text-text-dark group-hover:animate-wiggle">

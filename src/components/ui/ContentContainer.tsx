@@ -1,4 +1,4 @@
-import { Children } from "../types/general";
+import { Children } from "../../types/general";
 
 type Props = {
   children: Children;

@@ -1,6 +1,6 @@
-import ContentContainer from "./ContentContainer";
-import { categories } from "../data/categories";
-import CategoryBox from "./CategoryBox";
+import ContentContainer from "../ui/ContentContainer";
+import { categories } from "../../data/categories";
+import CategoryBox from "../ui/CategoryBox";
 
 export default function Home() {
   return (
