@@ -1,5 +1,5 @@
 import { faEarthAfrica, faMobileScreen, faTableCellsLarge, IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { Section } from "../types/general";
+import { Section } from "../types/Sections";
 import { faPinterest } from "@fortawesome/free-brands-svg-icons";
 
 type Category = {

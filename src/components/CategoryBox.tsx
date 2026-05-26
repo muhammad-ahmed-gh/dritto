@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Section } from "../types/general";
+import { Section } from "../types/Sections";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
