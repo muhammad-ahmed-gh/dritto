@@ -1,14 +1,8 @@
+import { BlockSitesSettings, ScrollingSettings, SocialMediaSettings, TabsSettings } from "./Sections";
+
 export type UserSettings = {
-  blockSites: [
-
-  ],
-  scrolling: [
-    
-  ],
-  tabs: [
-
-  ],
-  socialMedia: [
-
-  ]
+  blockSites: BlockSitesSettings,
+  scrolling: ScrollingSettings,
+  tabs: TabsSettings,
+  socialMedia: SocialMediaSettings
 };

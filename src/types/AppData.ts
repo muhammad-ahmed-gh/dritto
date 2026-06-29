@@ -4,5 +4,5 @@ import { UserSettings } from "./UserSettings";
 export type AppData = {
   appearance: AppearanceData;
   lang: "AR" | "EN";
-  settings: UserSettings;
+  userSettings: UserSettings;
 };

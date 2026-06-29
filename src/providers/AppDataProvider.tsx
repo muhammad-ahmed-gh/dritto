@@ -15,14 +15,12 @@ export function AppDataProvider({ children }: { children: Children }) {
 
   useEffect(() => {
     chrome.storage.local
-      .get(["controls", "tasks", "pomodoro", "calendar", "ui"])
+      .get(["appearance", "lang", "userSettings"])
       .then((data) => {
         if (
-          !("controls" in data) ||
-          !("pomodoro" in data) ||
-          !("calendar" in data) ||
-          !("tasks" in data) ||
-          !("ui" in data)
+          !("appearance" in data) ||
+          !("lang" in data) ||
+          !("userSettings" in data)
         ) {
           setError("ERROR: Couldn't load app data correctly");
         } else {
